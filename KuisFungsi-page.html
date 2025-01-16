@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal Fungsi</title>
+    <style>
+
+:root {
+    --primary: #fcfaf6b4;
+    --bg: rgb(12, 53, 100);
+    }
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    }
+     body {
+        font-family: "Poppins" "sans-serif";
+        background-color: rgb(12, 53, 100);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        }
+
+    /*Navbar*/
+    .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 7%;
+    background-color: #000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    }
+    .navbar .navbar-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    
+    }
+
+    .navbar .navbar-logo span {
+    color: var(--primary);
+    }
+
+    .navbar .navbar-nav a {
+    color: rgb(255, 254, 252);
+    display: inline-block;
+    font-size: 1.3rem;
+    margin: 0 1rem;
+    }
+    .navbar .navbar-nav a:hover {
+    color: var(--primary);
+    }
+
+    .navbar .navbar-nav a::after {
+    content: "";
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid var(--primary);
+    transform: scaleX(0);
+    transition: 0.2s linear;
+    }
+
+    .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.5);
+    }
+
+    .navbar .navbar-extra a {
+    color: rgb(187, 165, 43);
+    margin: 0 0.5rem;
+    }
+
+    .navbar .navbar-extra a:hover {
+    color: var(--primary);
+    }
+
+    
+    .dropdown {
+    position: relative;
+    display: inline-block;
+    }
+
+    .dropbtn {
+    
+    color: rgb(235, 205, 109);
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    }
+
+
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #080808;
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .dropdown-content a:hover {
+    background-color: #524141;
+    }
+
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+        .container {
+            background-color: #8cb9fd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .answer-choice {
+            margin: 10px 0;
+        }
+
+        .answer-choice input {
+            margin-right: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #28c0d4;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2889a7;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .explanation {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #3374ca;
+            border-radius: 4px;
+            display: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .wrong-answer {
+            color: red;
+        }
+
+        #pg-explanation {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Memberikan jarak antar pembahasan */
+}
+
+    #pg-explanation div {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+        
+
+     #essayExplanation {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Memberikan jarak antar pembahasan */
+}
+
+    #essayExplanation p {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+        <!-- Navbar start -->
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">FUNGSI & RELASI</a>
+
+      <div class="navbar-nav">
+        <a href="matdis kelompok 5.html">Home</a>
+        <a href="Kalkulator.html">Kalkulator</a>
+       
+
+        <div class="dropdown">
+          <a href="#" class="dropbtn">Relasi</a>
+          <div class="dropdown-content">
+            <a href="PenyajianRelasi-page.html">Penyajian Relasi</a>
+            <a href="SifatRelasi-page.html">Sifat-Sifat Relasi Biner</a>
+            <a href="OperasiRelasi-page.html">Operasi Relasi</a>
+            <a href="KuisRelasi-page.html">Kuis Relasi</a>
+            <a href="VideoRelasi-page.html">Video Pembelajaran</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="#" class="dropbtn">Fungsi</a>
+          <div class="dropdown-content">
+            <a href="JenisFungsi-page.html">Jenis-Jenis Fungsi</a>
+            <a href="Fungsikhusus-page.html">Fungsi Khusus</a>
+            <a href="KuisFungsi-page.html">Kuis Fungsi</a>
+            <a href="VideoFungsi-page.html">Video Pembelajaran</a>
+           
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+        <h1>Soal Fungsi</h1>
+
+        <!-- Soal Pilihan Ganda (No 1-5) -->
+        <!-- No 1 -->
+        <div class="question">
+            <b>1. Jika f(x)=2x+3f(x) = 2x + 3f(x)=2x+3, maka f(4)f(4)f(4) adalah...
+               
+            </b>
+        </div>
+        <div class="answer-choice">
+            <input type="radio" name="q1" id="q1a" value="a"> 9<br>
+            <input type="radio" name="q1" id="q1b" value="b"> 10<br>
+            <input type="radio" name="q1" id="q1c" value="c"> 11<br>
+            <input type="radio" name="q1" id="q1d" value="d"> 12<br>
+        </div>
+
+        <br>
+
+        <!-- No 2 -->
+        <div class="question">
+            <b>2. Diberikan g(x)=x2−4x+3.Nilai g(2)adalah...
+            </b>
+        </div>
+        <div class="answer-choice">
+            <input type="radio" name="q2" id="q2a" value="a"> 0<br>
+            <input type="radio" name="q2" id="q2b" value="b"> 1<br>
+            <input type="radio" name="q2" id="q2c" value="c"> -1<br>
+            <input type="radio" name="q2" id="q2d" value="d"> 2<br>
+        </div>
+
+        <br>
+
+        <!-- No 3 -->
+        <div class="question">
+            <b>3. Jika h(x)=5x−7, maka nilai xxx yang memenuhi h(x)=13 adalah...
+            </b>
+        </div>
+        <div class="answer-choice">
+            <input type="radio" name="q3" id="q3a" value="a"> 3<br>
+            <input type="radio" name="q3" id="q3b" value="b"> 6<br>
+            <input type="radio" name="q3" id="q3c" value="c"> 5<br>
+            <input type="radio" name="q3" id="q3d" value="d"> 6<br>
+        </div>
+
+        <br>
+
+        <!-- No 4 -->
+        <div class="question">
+            <b>4. Fungsi f(x)=x2+kx+1 memiliki nilai f(1)= 5. Nilai k adalah...
+            </b>
+        </div>
+        <div class="answer-choice">
+            <input type="radio" name="q4" id="q4a" value="a"> 1<br>
+            <input type="radio" name="q4" id="q4b" value="b">2<br>
+            <input type="radio" name="q4" id="q4c" value="c"> 3<br>
+            <input type="radio" name="q4" id="q4d" value="d"> 4<br>
+        </div>
+
+        <br>
+
+        <!-- No 5 -->
+        <div class="question">
+            <b>5. Diberikan fungsi invers f−1(x)=3x−2. Jika f(5)=y, maka nilai y adalah...</b>
+        </div>
+        <div class="answer-choice">
+            <input type="radio" name="q5" id="q5a" value="a"> 10<br>
+            <input type="radio" name="q5" id="q5b" value="b"> 13<br>
+            <input type="radio" name="q5" id="q5c" value="c"> 16<br>
+            <input type="radio" name="q5" id="q5d" value="d"> 19<br>
+        </div>
+
+        <br>
+
+        <button onclick="showPGExplanations()">Periksa Pembahasan Soal Pilihan Ganda</button>
+
+        <div id="pg-explanation" style="display: none;">
+            <div id="explanation1"></div>
+            <div id="explanation2"></div>
+            <div id="explanation3"></div>
+            <div id="explanation4"></div>
+            <div id="explanation5"></div>
+        </div>
+
+        <br><br>
+       
+        <!-- Soal Essay (No 6-10) -->
+
+        <!-- No 6 -->
+        <div class="question">
+            <b>6. Diketahui f(x) = 2x + 8 dan g(x) = 4x - 8, maka (f o g)(x) adalah?</b>
+        </div>
+        <input type="text" id="1" placeholder="Jawaban Anda...">
+
+        <br><br>
+
+        <!-- No 7 -->
+        <div class="question">
+            <b>7. Jika f(x) = 2x + 7 dan g(x) = x² - 2x + 1 Maka berapa nilai (fog)(-1) ?</b>
+        </div>
+        <input type="text" id="2" placeholder="Jawaban Anda...">
+
+        <br><br>
+
+        <!-- No 8 -->
+        <div class="question">
+            <b>8. Diketahui f(x)=x-4 dan g(x) = 3x + 6. Berapa nilai (gf) (3) ?</b>
+        </div>
+        <input type="text" id="3" placeholder="Jawaban Anda...">
+
+        <br><br>
+
+        <!-- No 9 -->
+        <div class="question">
+            <b>9. Jika diberikan f(x) = x - 2 dan (fog)(x) = x² + 2x - 6, maka berapa g(x)?</b>
+        </div>
+        <input type="text" id="4" placeholder="Jawaban Anda...">
+
+        <br><br>
+
+        <!-- No 10 -->
+        <div class="question">
+            <b>10. Diketahui f(x) = x+1 dan (f o g)(x) = 3x²+4. Tentukan g(4)!</b>
+        </div>
+        <input type="text" id="5" placeholder="Jawaban Anda...">
+        
+        <div id="essayExplanation" style="display: none;"></div>
+        <br><br>
+
+        <button onclick="submitEssayAnswers()">Kirim Jawaban Essay</button>
+
+        <div id="essayExplanation" class="essay-explanation"></div>
+
+    </div>
+
+    <script>
+        // Fungsi untuk memeriksa apakah semua soal PG telah dijawab
+        function allPGAnswered() {
+            const pgQuestions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+            return pgQuestions.every(q => document.querySelector(`input[name="${q}"]:checked`));
+        }
+
+        // Fungsi untuk memeriksa apakah semua soal essay telah dijawab
+        function allEssayAnswered() {
+            const essayQuestions = ['1', '2', '3', '4', '5'];
+            return essayQuestions.every(q => document.getElementById(q).value.trim() !== '');
+        }
+
+        // Menampilkan pembahasan soal PG jika semua soal PG sudah dijawab
+        function showPGExplanations() {
+            if (allPGAnswered()) {
+                const correctAnswers = {
+                    q1: 'b',
+                    q2: 'a',
+                    q3: 'a',
+                    q4: 'a',
+                    q5: 'a'
+                };
+                const explanations = {
+                    q1: "1. Jawaban yang benar adalah c. 11 <br> Pembahasan: <br> Substitusi x=4x = 4x=4 ke fungsi f(x)=2x+3f(x) = 2x + 3f(x)=2x+3: <br> f(4)=2(4)+3=8+3=11 <br>",
+                    q2: "2. Jawaban yang benar adalah a. 0 <br> Pembahasan: <br> Substitusi x=2x = 2x=2: <br> g(2)=(2)2-4(2)+3=4−8+3=0 <br> ",
+                    q3: "3. Jawaban yang benar adalah b. 4 <br> Pembahasan: <br> Selesaikan 5x−7=13: <br> 5x=20(tambahkan 7 ke kedua sisi) <br> x=4(bagi dengan 5) <br> ",
+                    q4: "4. Jawaban yang benar adalah b. 2 <br> Pembahasan: <br> Substitusi f(1)=5: <br> (1)2+k(1)+1=5⇒1+k+1=5 <br> k=2 <br> ",
+                    q5: "5. Jawaban yang benar adalah b. 13 <br> Pembahasan: <br> Fungsi invers f−1(x) menunjukkan bahwa x adalah output dari fungsi f. <br> Jika f(5)=y, maka f−1(y)=5: <br> 3y−2=5⇒3y=7⇒y=13",
+                };
+
+                // Cek setiap soal PG dan tampilkan apakah benar atau salah
+                ['q1', 'q2', 'q3', 'q4', 'q5'].forEach((q, index) => {
+                    const selectedAnswer = document.querySelector(`input[name="${q}"]:checked`)?.value;
+                    const result = selectedAnswer === correctAnswers[q] ? 'Benar' : 'Salah';
+                    const resultColor = result === 'Benar' ? 'green' : 'red';
+
+                    document.getElementById(`explanation${index + 1}`).innerHTML = `${explanations[q]} <span style="color: ${resultColor};">${result}</span>`;
+                });
+
+                document.getElementById('pg-explanation').style.display = 'block';
+            } 
+            
+            else {
+                alert('Harap jawab semua soal pilihan ganda terlebih dahulu.');
+            }
+        }
+
+        // Menampilkan pembahasan soal essay jika semua soal essay sudah dijawab
+        function submitEssayAnswers() {
+            if (allEssayAnswered()) {
+                const answers = {
+                    1: "Pembahasan: f(x) = 2x + 8 <br> g(x) = 4x - 8 <br> Temukan fungsi (f o g)(x) <br> (f o g)(x) = f(g(x)) <br> = 2g(x) + 8 <br>  = 2(4x - 8) + 8 <br> = 8x - 16 + 8 <br>  = 8x - 8 <br> Jadi, (f o g)(x) = 8x - 8",
+                    2: "Pembahasan: f(x)=2x + 7, g(x) = x² -2x + 1 <br> (fog)(x) = 2(x²-2x+1)+7 <br>  = 2x²-4x+2+7 <br>  = 2x²-4x+9 <br> (fog) (-1) = 2(-1)2-4(-1)+9 <br>  = 2+4+9 <br>  = 15 <br> Jadi, nilai (fog)(-1) = 15",
+                    3: "Pembahasan: f(x) = x-4 <br> y = x-4 <br>  x = y +4 <br> F-¹(y) = y + 4 <br> f-¹(x) = x + 4 <br> g(x) = 3x + 6 <br> y     = 3x + 6 <br> 3x   = y - 6 <br> X     = y - 6/3 <br> g-¹(y)= Y - 6/3 <br> g-¹(x)= X - 6/3 <br> (g°f) (x) = f¹ (g'(x)) <br> = f¹ (x - 6/3) <br> = (x - 6/3) + 4 <br> = (x - 6/3) + 12/3 <br>  = x + 6/3 <br>(g°f)-¹ (3) = 3 + 6/3 = 9/3 = 3 <br> Jadi, nilai (gf) (3) = 3",
+                    4: "Pembahasan:  (fog)(x) = x² + 2x - 6 <br> f(g(x))   = x² + 2x - 6 <br> Karena f(x) = x - 2, maka f(g(x)) = g(x) - 2 <br> g(x) - 2 = x² + 2x - 6 <br> g(x)      = x² + 2x - 4 <br> Jadi, g(x) = x² + 2x - 4",
+                    5: "Pembahasan: f(x) = x+1 <br> (f o g)(x) = 3x²+4 <br> f(g(x)) = 3x²+4 <br> g(x)+1    = 3x²+4 <br> g(x) = 3x²+4-1 <br> g(x) = 3x²+3 <br> g(4) = 3(4)²+3 = 3(16)+3 = 51"
+                };
+
+                let essayExplanation = "";
+                Object.keys(answers).forEach(key => {
+                    const userAnswer = document.getElementById(key).value.trim();
+                    const correctAnswer = answers[key].replace("Pembahasan:", "").trim();
+                    const result = userAnswer.toLowerCase() === correctAnswer.toLowerCase() ? "Benar" : "Salah";
+                    const resultColor = result === "Benar" ? "green" : "red";
+
+                    essayExplanation += `<p><b>Soal ${key}:</b> ${answers[key]} <span style="color: ${resultColor};">${result}</span></p>`;
+                });
+
+                document.getElementById('essayExplanation').innerHTML = essayExplanation;
+                document.getElementById('essayExplanation').style.display = "block";
+            } else {
+                alert("Harap jawab semua soal essay terlebih dahulu.");
+            }
+        }
+
+      
+        
+    </script>
+
+</body>
+</html>

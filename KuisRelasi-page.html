@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soal Relasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+
+    :root {
+    --primary: #fcfaf6b4;
+    --bg: rgb(12, 53, 100);
+    }
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    }
+     body {
+        font-family: "Poppins" "sans-serif";
+        background-color: rgb(12, 53, 100);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        }
+
+    /*Navbar*/
+    .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 7%;
+    background-color: #000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    }
+    .navbar .navbar-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    
+    }
+
+    .navbar .navbar-logo span {
+    color: var(--primary);
+    }
+
+    .navbar .navbar-nav a {
+    color: rgb(255, 254, 252);
+    display: inline-block;
+    font-size: 1.3rem;
+    margin: 0 1rem;
+    }
+    .navbar .navbar-nav a:hover {
+    color: var(--primary);
+    }
+
+    .navbar .navbar-nav a::after {
+    content: "";
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid var(--primary);
+    transform: scaleX(0);
+    transition: 0.2s linear;
+    }
+
+    .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.5);
+    }
+
+    .navbar .navbar-extra a {
+    color: rgb(187, 165, 43);
+    margin: 0 0.5rem;
+    }
+
+    .navbar .navbar-extra a:hover {
+    color: var(--primary);
+    }
+
+    
+    .dropdown {
+    position: relative;
+    display: inline-block;
+    }
+
+    .dropbtn {
+    
+    color: rgb(235, 205, 109);
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    }
+
+
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #080808;
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .dropdown-content a:hover {
+    background-color: #524141;
+    }
+
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+        .container {
+            background-color: #8cb9fd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .answer-choice {
+            margin: 10px 0;
+        }
+
+        .answer-choice input {
+            margin-right: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #28c0d4;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2889a7;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .explanation {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #3374ca;
+            border-radius: 4px;
+            display: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .wrong-answer {
+            color: red;
+        }
+
+        
+        #pg-explanation {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Memberikan jarak antar pembahasan */
+}
+
+    #pg-explanation div {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+     #essayExplanation {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Memberikan jarak antar pembahasan */
+}
+
+    #essayExplanation p {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar start -->
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">FUNGSI & RELASI</a>
+  
+        <div class="navbar-nav">
+          <a href="matdis kelompok 5.html">Home</a>
+          <a href="Kalkulator.html">Kalkulator</a>
+         
+  
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Relasi</a>
+            <div class="dropdown-content">
+              <a href="PenyajianRelasi-page.html">Penyajian Relasi</a>
+              <a href="SifatRelasi-page.html">Sifat-Sifat Relasi Biner</a>
+              <a href="OperasiRelasi-page.html">Operasi Relasi</a>
+              <a href="KuisRelasi-page.html">Kuis Relasi</a>
+              <a href="VideoRelasi-page.html">Video Pembelajaran</a>
+            </div>
+          </div>
+  
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Fungsi</a>
+            <div class="dropdown-content">
+              <a href="JenisFungsi-page.html">Jenis-Jenis Fungsi</a>
+              <a href="Fungsikhusus-page.html">Fungsi Khusus</a>
+              <a href="KuisFungsi-page.html">Kuis Fungsi</a>
+              <a href="VideoFungsi-page.html">Video Pembelajaran</a>
+             
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container">
+        <h1>Soal Relasi</h1>
+
+        <!-- Soal Pilihan Ganda (No 1-5) -->
+        <!-- No 1 -->
+        <div class="question">
+            <b>1. Diberikan himpunan A = \{1, 2, 3\} dan B {4, 5}. Relasi R didefinisikan sebagai R = {(x,y) x ∈ A, y ∈ B, x + y = 6}. 
+                Pasangan anggota relasi R adalah...
+            </b>
+        </div>
+        <div class="answer-choice">
+            <input type="radio" name="q1" id="q1a" value="a"> {(1, 4), (2, 5)}<br>
+            <input type="radio" name="q1" id="q1b" value="b"> {(1, 5), (2, 4)}<br>
+            <input type="radio" name="q1" id="q1c" value="c"> {(2, 4), (3, 5)}<br>
+            <input type="radio" name="q1" id="q1d" value="d"> {(1, 5), (3, 4)}<br>
+            <input type="radio" name="q1" id="q1e" value="e"> {(2, 5), (3, 4)}<br>
+        </div>
+
+        <br>
+
+        <!-- No 2 -->
+        <div class="question">
+            <b>2. Relasi R pada himpunan A = {a, b, c} dinyatakan dalam diagram panah berikut: R = {(a, b), (b, c), (c, a)}. Pernyataan berikut yang benar adalah...
+            </b>
+        </div>
+        <div class="answer-choice">
+            <input type="radio" name="q2" id="q2a" value="a"> Relasi R bersifat refleksif<br>
+            <input type="radio" name="q2" id="q2b" value="b"> Relasi R bersifat simetris<br>
+            <input type="radio" name="q2" id="q2c" value="c"> Relasi R bersifat transitif<br>
+            <input type="radio" name="q2" id="q2d" value="d"> Relasi R bersifat ekuivalen<br>
+            <input type="radio" name="q2" id="q2e" value="e"> Tidak ada yang benar<br>
+        </div>
+
+        <br>
+
+        <!-- No 3 -->
+        <div class="question">
+            <b>3. Diberikan relasi R pada himpunan A = {1, 2, 3, 4} yang didefinisikan sebagai R {(x, y) | x ≤ y}. <br>
+                Banyak pasangan anggota dalam relasi R adalah...
+            </b>
+        </div>
+        <div class="answer-choice">
+            <input type="radio" name="q3" id="q3a" value="a"> 4<br>
+            <input type="radio" name="q3" id="q3b" value="b"> 6<br>
+            <input type="radio" name="q3" id="q3c" value="c"> 10<br>
+            <input type="radio" name="q3" id="q3d" value="d"> 12<br>
+            <input type="radio" name="q3" id="q3e" value="e"> 16<br>
+        </div>
+
+        <br>
+
+        <!-- No 4 -->
+        <div class="question">
+            <b>4. Relasi R pada himpunan A = {1, 2, 3} dinyatakan dengan R = {(x, y) | xygenap}<br>
+                Pasangan yang termasuk dalam relasi R adalah...
+            </b>
+        </div>
+        <div class="answer-choice">
+            <input type="radio" name="q4" id="q4a" value="a"> {(1, 2), (2, 3), (3, 1)}<br>
+            <input type="radio" name="q4" id="q4b" value="b"> {(2, 2), (2, 3), (3, 2)}<br>
+            <input type="radio" name="q4" id="q4c" value="c"> {(1, 2), (2, 2), (2, 3)}<br>
+            <input type="radio" name="q4" id="q4d" value="d"> {(2, 2), (2, 3), (3, 3)}<br>
+            <input type="radio" name="q4" id="q4e" value="e"> {(2, 2), (3, 2), (3, 3)}<br>
+        </div>
+
+        <br>
+
+        <!-- No 5 -->
+        <div class="question">
+            <b>5. Diberikan himpunan A = {1, 2, 3} dan relasi R pada A adalah R = {(1,2), (2, 3), (1, 3)}. Apakah relasi R bersifat transitif?</b>
+        </div>
+        <div class="answer-choice">
+            <input type="radio" name="q5" id="q5a" value="a"> Ya, karena (1, 2) dan (2, 3) menghasilkan (1,3)<br>
+            <input type="radio" name="q5" id="q5b" value="b"> Tidak, karena (1, 2) tidak menghasilkan pasangan lain<br>
+            <input type="radio" name="q5" id="q5c" value="c"> Ya, karena semua pasangan memenuhi sifat transitif<br>
+            <input type="radio" name="q5" id="q5d" value="d"> Tidak, karena (2, 3) tidak menghasilkan pasangan baru<br>
+            <input type="radio" name="q5" id="q5e" value="e"> Semua jawaban salah<br>
+        </div>
+
+        <br>
+
+        <button onclick="showPGExplanations()">Periksa Pembahasan Soal Pilihan Ganda</button>
+
+        <div id="pg-explanation" style="display: none;">
+            <div id="explanation1"></div>
+            <div id="explanation2"></div>
+            <div id="explanation3"></div>
+            <div id="explanation4"></div>
+            <div id="explanation5"></div>
+        </div>
+
+        <br><br>
+
+        <!-- Soal Essay (No 6-10) -->
+
+        <!-- No 6 -->
+        <div class="question">
+            <b>6. Diberikan himpunan A = {1, 2, 3} * danB = {4, 5}. Relasi R didefinisikan sebagai R = (x,y)| x + y = 6 ,x in A,y in B
+                 Tuliskan semua pasangan yang termasuk dalam relasi R!
+            </b>
+        </div>
+        <input type="text" id="1" placeholder="Jawaban Anda...">
+
+        <br><br>
+
+        <!-- No 7 -->
+        <div class="question">
+            <b>7. Diberikan himpunan A = {1, 2, 3} dan B {4, 5, 6}. Relasi R didefinisikan sebagai R = (x,y)| xy > 10. 
+                Tentukan semua pasangan dalam relasi R !</b>
+        </div>
+        <input type="text" id="2" placeholder="Jawaban Anda...">
+
+        <br><br>
+
+        <!-- No 8 -->
+        <div class="question">
+            <b>8. Diberikan relasi R pada himpunan A {2, 4, 6} yang didefinisikan sebagai R = {(x,y) x mod y = 0 x, y ∈ A}.
+                 Tentukan semua pasangan anggota R !</b>
+        </div>
+        <input type="text" id="3" placeholder="Jawaban Anda...">
+
+        <br><br>
+
+        <!-- No 9 -->
+        <div class="question">
+            <b>9. Diberikan relasi R pada himpunan A {1, 2, 3} yang didefinisikan sebagai R  (x,y)| xy > 2.
+                Tentukan semua pasangan dalam relasi R !</b>
+        </div>
+        <input type="text" id="4" placeholder="Jawaban Anda...">
+
+        <br><br>
+
+        <!-- No 10 -->
+        <div class="question">
+            <b>10. Relasi R didefinisikan pada himpunan bilangan asli A = {1, 2, 3, 4} sebagai R y = x + 1  {(x,y) |}
+                Tuliskan semua pasangan dalam relasi R.</b>
+        </div>
+        <input type="text" id="5" placeholder="Jawaban Anda...">
+
+        <br><br>
+
+        <button onclick="submitEssayAnswers()">Kirim Jawaban Essay</button>
+        <div id="essayExplanation" class="essay-explanation"></div>
+
+           <div id="essayExplanation" class="essay-explanation"></div>
+    </div>
+
+    <script>
+        // Fungsi untuk memeriksa apakah semua soal PG telah dijawab
+        function allPGAnswered() {
+            const pgQuestions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+            return pgQuestions.every(q => document.querySelector(`input[name="${q}"]:checked`));
+        }
+
+        // Fungsi untuk memeriksa apakah semua soal essay telah dijawab
+        function allEssayAnswered() {
+            const essayQuestions = ['1', '2', '3', '4', '5'];
+            return essayQuestions.every(q => document.getElementById(q).value.trim() !== '');
+        }
+
+        // Menampilkan pembahasan soal PG jika semua soal PG sudah dijawab
+        function showPGExplanations() {
+            if (allPGAnswered()) {
+                const correctAnswers = {
+                    q1: 'b',
+                    q2: 'a',
+                    q3: 'a',
+                    q4: 'a',
+                    q5: 'a'
+                };
+                const explanations = {
+                    q1: "1. Jawaban yang benar adalah c. {(2, 4), (3, 5) <br> Pembahasan: Syarat relasi R adalah x + y = 6 <br> Jika x = 1 y = 5 (tidak ada pasangan dalam B). <br> Jika x = 2 y = 4 <br> Jika x = 3 y = 5 <br> Maka relasi R = {(2, 4), (3, 5)} ",
+                    q2: "2. Jawaban yang benar adalah e. Tidak ada yang benar. Pembahasan: Refleksif: Tidak semua elemen A memiliki pasangan (x, x). <br> Simetris: Jika (a, b) ∈ R, maka (b,a) & R. <br> Transitif: Tidak terpenuhi karena (a, b) dan (b, c) tidak menghasilkan (a, c) di R<br> ",
+                    q3: "3. Jawaban yang benar adalah c. 10 Pembahasan: Pasangan anggota relasi R adalah semua (x, y) yang memenuhi x < y: <br> Untuk x = 1, y = {1,2,3,4} (4 pasangan). <br> Untuk x = 2, y = {2, 3, 4} (3 pasangan). <br> Untuk x = 3 y = {3, 4} (2 pasangan). <br> Untuk x = 4 y = {4} (1 pasangan). <br> Jumlah total pasangan = 4 + 3 + 2 + 1 = 10",
+                    q4: "4. Jawaban yang benar adalah b. {(2, 2), (2, 3), (3, 2)} Pembahasan: x y genap jika salah satu dari x atau y genap. <br> Pasangan yang memenuhi: (2, 2), (2, 3), (3, 2).",
+                    q5: "5. Jawaban yang benar adalah a. Ya, karena (1, 2) dan (2,3) menghasilkan (1,3) Pembahasan: <br> Relasi transitif jika (x, y) ∈ R dan (y, z) ∈ R, maka (x, z) ∈ R. <br> Dari (1, 2) dan (2, 3), didapatkan (1, 3).<br> Semua pasangan sudah mencakup sifat transitif.  ."
+                };
+
+                // Cek setiap soal PG dan tampilkan apakah benar atau salah
+                ['q1', 'q2', 'q3', 'q4', 'q5'].forEach((q, index) => {
+                    const selectedAnswer = document.querySelector(`input[name="${q}"]:checked`)?.value;
+                    const result = selectedAnswer === correctAnswers[q] ? 'Benar' : 'Salah';
+                    const resultColor = result === 'Benar' ? 'green' : 'red';
+
+                    document.getElementById(`explanation${index + 1}`).innerHTML = `${explanations[q]} <span style="color: ${resultColor};">${result}</span>`;
+                });
+
+                document.getElementById('pg-explanation').style.display = 'block';
+            } 
+            
+            else {
+                alert('Harap jawab semua soal pilihan ganda terlebih dahulu.');
+            }
+        }
+
+        // Menampilkan pembahasan soal essay jika semua soal essay sudah dijawab
+        function submitEssayAnswers() {
+            if (allEssayAnswered()) {
+                const answers = {
+                    1: "Pembahasan: Relasi R memenuhi x + y = 6 <br> Jika x = 1 maka y = 6 - 1 = 5 (ada di B ). Pasangan: (1,5). <br> Jika x = 2 maka y = 6 - 2 = 4 (ada di B ). Pasangan: (2, 4). <br> Jika x = 3 maka y = 6 - 3 = 3 (tidak ada di B). <br> Maka, relasi R = {(1, 5), (2, 4)}",
+                    2: "Pembahasan: Relasi R memenuhi xy > 10 <br> Jika x = 1 xy = \{4, 5, 6\} semua hasil tidak memenuhi syarat. <br> Jika x = 2 xy = \{8, 10, 12\} Pasangan yang memenuhi adalah (2, 6). <br> Jika x = 3 xy = \{12, 15, 18\} Semua pasangan memenuhi syarat: (3, 4), (3, 5), (3, 6). <br> Maka, R = \{(2, 6), (3, 4), (3, 5), (3, 6)\} ",
+                    3: "Pembahasan: Relasi R memenuhi x mod y = 0 <br> Untuk x = 2 y = 2 <br> Untuk x = 4 y = 2, 4 <br> Untuk x = 6 y = 2, 6 <br> Maka, pasangan dalam R: R = \{(2, 2), (4, 2), (4, 4), (6, 2), (6, 6)\}",
+                    4: "Pembahasan: Relasi R memenuhi xy > 2 <br> Untuk x = 1 Tidak ada pasangan y yang memenuhi syarat. <br> Untuk x = 2 y = 2, 3 Pasangan: (2, 2), (2, 3). <br> Untuk x = 3 y = 2 3. Pasangan: (3, 2), (3, 3). <br> Maka, R = \{(2, 2), (2, 3), (3, 2), (3, 3)\}",
+                    5: "Pembahasan: Pasangan dalam R: <br> Untuk x = 1 y = 2 Pasangan: (1, 2). <br> Untuk x = 2 y = 3 Pasangan: (2, 3). <br> Untuk x = 3 y = 4 Pasangan: (3, 4). <br> Untuk x = 4 y = 5 (tidak ada dalam A). <br> Maka, R = \{(1, 2), (2, 3), (3, 4)\}"
+                };
+
+                let essayExplanation = "";
+                Object.keys(answers).forEach(key => {
+                    const userAnswer = document.getElementById(key).value.trim();
+                    const correctAnswer = answers[key].replace("Pembahasan:", "").trim();
+                    const result = userAnswer.toLowerCase() === correctAnswer.toLowerCase() ? "Benar" : "Salah";
+                    const resultColor = result === "Benar" ? "green" : "red";
+
+                    essayExplanation += `<p><b>Soal ${key}:</b> ${answers[key]} <span style="color: ${resultColor};">${result}</span></p>`;
+                });
+
+                document.getElementById('essayExplanation').innerHTML = essayExplanation;
+                document.getElementById('essayExplanation').style.display = "block";
+            } else {
+                alert("Harap jawab semua soal essay terlebih dahulu.");
+            }
+        }
+
+      
+        
+    </script>
+
+</body>
+</html>

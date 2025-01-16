@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+ :root {
+  --primary: #fcfaf6b4;
+  --bg:  rgb(12, 53, 100);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+        body {
+          font-family: "Poppins" "sans-serif";
+            margin: 0;
+            padding: 0;
+            background-color: rgb(12, 53, 100);
+        }
+
+/*Navbar*/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 7%;
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+.navbar .navbar-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+ 
+}
+
+.navbar .navbar-logo span {
+  color: var(--primary);
+}
+
+.navbar .navbar-nav a {
+  color: rgb(255, 254, 252);
+  display: inline-block;
+  font-size: 1.3rem;
+  margin: 0 1rem;
+}
+.navbar .navbar-nav a:hover {
+  color: var(--primary);
+}
+
+.navbar .navbar-nav a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--primary);
+  transform: scaleX(0);
+  transition: 0.2s linear;
+}
+
+.navbar .navbar-nav a:hover::after {
+  transform: scaleX(0.5);
+}
+
+.navbar .navbar-extra a {
+  color: rgb(187, 165, 43);
+  margin: 0 0.5rem;
+}
+
+.navbar .navbar-extra a:hover {
+  color: var(--primary);
+}
+
+  
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  color: rgb(235, 205, 109);
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #080808;
+  min-width: 160px;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #524141;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+    .video h1{
+        font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    }
+ 
+        .video-container{
+            text-align: center;
+            margin-top: 150px;
+            margin-bottom: 50px;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">FUNGSI & RELASI</a>
+  
+        <div class="navbar-nav">
+          <a href="matdis kelompok 5.htmL">Home</a>
+          <a href="Kalkulator.html">Kalkulator</a>
+         
+  
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Relasi</a>
+            <div class="dropdown-content">
+              <a href="PenyajianRelasi-page.html">Penyajian Relasi</a>
+              <a href="SifatRelasi-page.html">Sifat-Sifat Relasi Biner</a>
+              <a href="OperasiRelasi-page.html">Operasi Relasi</a>
+              <a href="KuisRelasi-page.html">Kuis Relasi</a>
+              <a href="VideoRelasi-page.html">Video Pembelajaran</a>
+              
+            </div>
+          </div>
+  
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Fungsi</a>
+            <div class="dropdown-content">
+              <a href="JenisFungsi-page.html">Jenis-Jenis Fungsi</a>
+              <a href="Fungsikhusus-page.html">Fungsi Khusus</a>
+              <a href="KuisFungsi-page.html">Kuis Fungsi</a>
+              <a href="VideoFungsi-page.html">Video Pembelajaran</a>
+             
+            </div>
+          </div>
+        </div>
+      </nav>
+  
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+          <main class="content">
+            
+          </main>
+        </section>
+
+        
+
+>   <section class="video"><div class="video-container">
+        <h1>PENGERTIAN, PENYAJIAN, DAN OPERASI RELASI </h1>
+    <iframe width="1200" 
+    height="500" 
+    src="https://www.youtube.com/embed/gVtR59cXHDE" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
+</div></section>
+    
+</body>
+</html>

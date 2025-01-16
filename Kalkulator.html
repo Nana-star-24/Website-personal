@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Fungsi dan Relasi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
+  rel="stylesheet"
+/>
+    <style>
+
+:root {
+  --primary: #fcfaf6b4;
+  --bg:  rgb(12, 53, 100);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+        body {
+          font-family: "Poppins" "sans-serif";
+            margin: 0;
+            padding: 0;
+            background-color: rgb(12, 53, 100);
+        }
+
+/*Navbar*/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 7%;
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+.navbar .navbar-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+ 
+}
+
+.navbar .navbar-logo span {
+  color: var(--primary);
+}
+
+.navbar .navbar-nav a {
+  color: rgb(255, 254, 252);
+  display: inline-block;
+  font-size: 1.3rem;
+  margin: 0 1rem;
+}
+.navbar .navbar-nav a:hover {
+  color: var(--primary);
+}
+
+.navbar .navbar-nav a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--primary);
+  transform: scaleX(0);
+  transition: 0.2s linear;
+}
+
+.navbar .navbar-nav a:hover::after {
+  transform: scaleX(0.5);
+}
+
+.navbar .navbar-extra a {
+  color: rgb(187, 165, 43);
+  margin: 0 0.5rem;
+}
+
+.navbar .navbar-extra a:hover {
+  color: var(--primary);
+}
+
+  
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  color: rgb(235, 205, 109);
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #080808;
+  min-width: 160px;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #524141;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            margin-top: 20vh;
+            background-color: #8cb9fd;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #0c3564;
+            margin-bottom: 20px;
+        }
+        input, button, select {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #080000;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+          background-color: #2889a7;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            white-space: pre-line;
+        }
+        canvas {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .video h1{
+        font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+    color:#fff;
+    }
+ 
+        .video-container{
+            text-align: center;
+            margin-top: 150px;
+            margin-bottom: 50px;
+            
+        }
+
+   
+
+    </style>
+</head>
+<body>
+    <!-- Navbar start -->
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">FUNGSI & RELASI</a>
+  
+        <div class="navbar-nav">
+          <a href="matdis kelompok 5.html">Home</a>
+          <a href="Kalkulator.html">Kalkulator</a>
+          
+         
+  
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Relasi</a>
+            <div class="dropdown-content">
+              <a href="PenyajianRelasi-page.html">Penyajian Relasi</a>
+              <a href="SifatRelasi-page.html">Sifat-Sifat Relasi Biner</a>
+              <a href="OperasiRelasi-page.html">Operasi Relasi</a>
+              <a href="KuisRelasi-page.html">Kuis Relasi</a>
+              <a href="VideoRelasi-page.html">Video Pembelajaran</a>
+            </div>
+          </div>
+  
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Fungsi</a>
+            <div class="dropdown-content">
+              <a href="JenisFungsi-page.html">Jenis-Jenis Fungsi</a>
+              <a href="Fungsikhusus-page.html">Fungsi Khusus</a>
+              <a href="KuisFungsi-page.html">Kuis Fungsi</a>
+              <a href="VideoFungsi-page.html">Video Pembelajaran</a>
+             
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container">
+        <h2>Kalkulator Fungsi dan Relasi</h2>
+        
+        <!-- Pilihan Kalkulator -->
+        <label for="tipe">Pilih Kalkulator:</label>
+        <select id="tipe" onchange="updateForm()">
+            <option value="fungsi">Fungsi</option>
+            <option value="relasi">Relasi</option>
+        </select>
+
+        <!-- Form Fungsi -->
+        <div id="form-fungsi" class="form">
+            <label for="domain">Himpunan Domain (pisahkan dengan koma):</label>
+            <input type="text" id="domain" placeholder="Misal: 1,2,3">
+
+            <label for="kodomain">Himpunan Kodomain (pisahkan dengan koma):</label>
+            <input type="text" id="kodomain" placeholder="Misal: a,b,c">
+
+            <label for="relasi-fungsi">Pasangan Relasi (format: x-y, pisahkan dengan koma):</label>
+            <input type="text" id="relasi-fungsi" placeholder="Misal: 1-a,2-b,3-c">
+
+            <button onclick="cekFungsi()">Cek Fungsi</button>
+        </div>
+
+        <!-- Form Relasi -->
+        <div id="form-relasi" class="form" style="display: none;">
+            <label for="himpunan">Himpunan Elemen (pisahkan dengan koma):</label>
+            <input type="text" id="himpunan" placeholder="Misal: 1,2,3">
+
+            <label for="relasi-relasi">Pasangan Relasi (format: x-y, pisahkan dengan koma):</label>
+            <input type="text" id="relasi-relasi" placeholder="Misal: 1-1,2-2,3-3">
+
+            <button onclick="cekRelasi()">Cek Relasi</button>
+            <button onclick="relasiInvers()">Relasi Invers</button>
+        </div>
+
+        <!-- Hasil -->
+        <div class="result" id="result"></div>
+
+        <!-- Canvas untuk Grafik -->
+        <canvas id="graph" width="400" height="300"></canvas>
+    </div>
+
+    <section class="video"><div class="video-container">
+      <h1>TUTORIAL PENGGUNAAN KALKULATOR </h1>
+  <iframe  width="1200" 
+  height="500" 
+  src="https://www.youtube.com/embed/Yl7S09ndzyI" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen></iframe>
+</div></section>
+
+    <script>
+        function updateForm() {
+            const tipe = document.getElementById("tipe").value;
+            document.getElementById("form-fungsi").style.display = tipe === "fungsi" ? "block" : "none";
+            document.getElementById("form-relasi").style.display = tipe === "relasi" ? "block" : "none";
+            document.getElementById("result").innerText = "";
+            clearCanvas();
+        }
+
+        function clearCanvas() {
+            const canvas = document.getElementById("graph");
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function cekFungsi() {
+            const domain = document.getElementById("domain").value.split(",").map(x => x.trim());
+            const kodomain = document.getElementById("kodomain").value.split(",").map(x => x.trim());
+            const relasiInput = document.getElementById("relasi-fungsi").value.split(",").map(x => x.trim());
+            const relasi = relasiInput.map(pair => pair.split("-"));
+
+            console.log("Domain:", domain);
+            console.log("Kodomain:", kodomain);
+            console.log("Relasi:", relasi);
+
+            const domainSet = new Set(relasi.map(pair => pair[0]));
+            let isFungsi = domainSet.size === relasi.length;
+
+            const kodomainSet = new Set(relasi.map(pair => pair[1]));
+            let injektif = kodomainSet.size === relasi.length;
+
+            let surjektif = kodomain.every(k => relasi.some(pair => pair[1] === k));
+
+            let resultText = isFungsi ? "Relasi ini adalah FUNGSI.\n" : "Relasi ini BUKAN fungsi.\n";
+            resultText += injektif ? "Fungsi ini INJEKTIF.\n" : "Fungsi ini TIDAK INJEKTIF.\n";
+            resultText += surjektif ? "Fungsi ini SURJEKTIF.\n" : "Fungsi ini TIDAK SURJEKTIF.\n";
+            if (injektif && surjektif && isFungsi) resultText += "Fungsi ini BIJEKTIF.\n";
+            document.getElementById("result").innerText = resultText;
+
+            drawGraph(domain, kodomain, relasi);
+        }
+
+        function cekRelasi() {
+            const himpunan = document.getElementById("himpunan").value.split(",").map(x => x.trim());
+            const relasiInput = document.getElementById("relasi-relasi").value.split(",").map(x => x.trim());
+            const relasi = relasiInput.map(pair => pair.split("-"));
+
+            console.log("Himpunan:", himpunan);
+            console.log("Relasi:", relasi);
+
+            const isRefleksif = himpunan.every(e => relasi.some(pair => pair[0] === e && pair[1] === e));
+            const isSimetris = relasi.every(pair =>
+                relasi.some(r => r[0] === pair[1] && r[1] === pair[0])
+            );
+            const isTransitif = relasi.every(pair => {
+                const [a, b] = pair;
+                const related = relasi.filter(r => r[0] === b);
+                return related.every(r => relasi.some(t => t[0] === a && t[1] === r[1]));
+            });
+
+            let resultText = `Refleksif: ${isRefleksif ? "YA" : "TIDAK"}\n`;
+            resultText += `Simetris: ${isSimetris ? "YA" : "TIDAK"}\n`;
+            resultText += `Transitif: ${isTransitif ? "YA" : "TIDAK"}\n`;
+            document.getElementById("result").innerText = resultText;
+
+            drawGraph(himpunan, himpunan, relasi);
+        }
+
+        function relasiInvers() {
+            const relasiInput = document.getElementById("relasi-relasi").value.split(",").map(x => x.trim());
+            const relasi = relasiInput.map(pair => pair.split("-"));
+
+            const invers = relasi.map(pair => pair.reverse());
+
+            document.getElementById("result").innerText = "Relasi Invers: " + invers.map(pair => pair.join("-")).join(", ");
+            drawGraph(invers);
+        }
+
+        function drawGraph(domain, kodomain, relasi) {
+            const canvas = document.getElementById("graph");
+            const ctx = canvas.getContext("2d");
+            clearCanvas();
+
+            const domainPoints = domain.map((d, i) => ({ x: 50, y: 50 + i * 50, label: d }));
+            const kodomainPoints = kodomain.map((k, i) => ({ x: 300, y: 50 + i * 50, label: k }));
+
+            domainPoints.forEach(point => {
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 10, 0, 2 * Math.PI);
+                ctx.fillStyle = "blue";
+                ctx.fill();
+                ctx.fillText(point.label, point.x - 20, point.y + 5);
+            });
+
+            kodomainPoints.forEach(point => {
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 10, 0, 2 * Math.PI);
+                ctx.fillStyle = "red";
+                ctx.fill();
+                ctx.fillText(point.label, point.x + 15, point.y + 5);
+            });
+
+            relasi.forEach(([d, k]) => {
+                const start = domainPoints.find(p => p.label === d);
+                const end = kodomainPoints.find(p => p.label === k);
+                if (start && end) {
+                    ctx.beginPath();
+                    ctx.moveTo(start.x, start.y);
+                    ctx.lineTo(end.x, end.y);
+                    ctx.stroke();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
